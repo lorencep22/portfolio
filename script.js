@@ -439,3 +439,118 @@ loadingStyle.textContent = `
     }
 `;
 document.head.appendChild(loadingStyle);
+
+// Skills Accordion Functionality
+function toggleAccordion(header) {
+  const category = header.parentElement;
+  const isActive = category.classList.contains("active");
+
+  // Close all other accordions
+  document.querySelectorAll(".skill-category").forEach((cat) => {
+    if (cat !== category) {
+      cat.classList.remove("active");
+    }
+  });
+
+  // Toggle current accordion
+  if (isActive) {
+    category.classList.remove("active");
+  } else {
+    category.classList.add("active");
+  }
+}
+
+function closeAccordion(category) {
+  // Add a small delay to allow for mouse movement between elements
+  setTimeout(() => {
+    if (!category.matches(":hover")) {
+      category.classList.remove("active");
+    }
+  }, 100);
+}
+
+// Accordion headers event listeners
+document.querySelectorAll(".accordion-header").forEach((header) => {
+  header.addEventListener("click", () => toggleAccordion(header));
+});
+
+// Close accordion on mouse leave
+document.querySelectorAll(".skill-category").forEach((category) => {
+  category.addEventListener("mouseleave", () => closeAccordion(category));
+});
+
+// Anti-bot Email Protection
+function toggleEmail() {
+  const button = document.getElementById("show-email-btn");
+  const container = document.getElementById("email-container");
+
+  // Check if email is already revealed
+  if (container.innerHTML.trim() !== "") {
+    // Hide email
+    container.innerHTML = "";
+    button.innerHTML = '<i class="fas fa-eye"></i> Show Email';
+    button.classList.remove("email-revealed");
+  } else {
+    // Show email - split into parts to avoid bot detection
+    const emailParts = ["lorence", ".", "palisan", "@", "gmail", ".", "com"];
+    const email = emailParts.join("");
+
+    container.innerHTML = `
+      <p class="email-address">
+        <a href="mailto:${email}" class="email-link">
+          <i class="fas fa-envelope"></i> ${email}
+        </a>
+      </p>
+    `;
+
+    button.innerHTML = '<i class="fas fa-eye-slash"></i> Hide Email';
+    button.classList.add("email-revealed");
+  }
+}
+
+// Anti-bot Phone Protection
+function togglePhone() {
+  const button = document.getElementById("show-phone-btn");
+  const container = document.getElementById("phone-container");
+
+  // Check if phone is already revealed
+  if (container.innerHTML.trim() !== "") {
+    // Hide phone
+    container.innerHTML = "";
+    button.innerHTML = '<i class="fas fa-eye"></i> Show Phone';
+    button.classList.remove("email-revealed");
+  } else {
+    // Show phone - split into parts to avoid bot detection
+    const phoneParts = ["+63", " ", "928", "221", "9343"];
+    const phone = phoneParts.join("");
+
+    container.innerHTML = `
+      <p class="email-address">
+        <a href="viber://chat?number=${phone.replace(
+          /\s/g,
+          ""
+        )}" class="email-link">
+          <i class="fab fa-viber"></i> ${phone}
+        </a>
+      </p>
+    `;
+
+    button.innerHTML = '<i class="fas fa-eye-slash"></i> Hide Phone';
+    button.classList.add("email-revealed");
+  }
+}
+
+// Initialize email and phone protection on page load
+document.addEventListener("DOMContentLoaded", function () {
+  // Ensure email is hidden by default
+  const container = document.getElementById("email-container");
+  if (container) {
+    container.innerHTML = "";
+  }
+
+  // Ensure phone is hidden by default
+  const phoneContainer = document.getElementById("phone-container");
+  if (phoneContainer) {
+    phoneContainer.innerHTML = "";
+  }
+});
