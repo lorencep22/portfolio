@@ -19,12 +19,17 @@ document.querySelectorAll(".nav-link").forEach((n) =>
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-    if (target) {
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+    const href = this.getAttribute("href");
+
+    // Only process if href is not just "#" and contains a valid selector
+    if (href && href !== "#" && href.length > 1) {
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
     }
   });
 });
@@ -492,7 +497,7 @@ function toggleEmail() {
     button.classList.remove("email-revealed");
   } else {
     // Show email - split into parts to avoid bot detection
-    const emailParts = ["lorence", ".", "palisan", "@", "gmail", ".", "com"];
+    const emailParts = ["lorence", "palisan2", "@", "gmail", ".", "com"];
     const email = emailParts.join("");
 
     container.innerHTML = `
@@ -553,4 +558,45 @@ document.addEventListener("DOMContentLoaded", function () {
   if (phoneContainer) {
     phoneContainer.innerHTML = "";
   }
+});
+
+// Service card accordion functionality
+document.addEventListener("DOMContentLoaded", function () {
+  const serviceCards = document.querySelectorAll(".service-card");
+  let currentlyExpanded = null;
+
+  serviceCards.forEach((card) => {
+    const features = card.querySelector(".service-features");
+    const featureItems = features.querySelectorAll("li");
+
+    // Add hover event listeners
+    card.addEventListener("mouseenter", () => {
+      // If there's a currently expanded card that's not this one, collapse it
+      if (currentlyExpanded && currentlyExpanded !== card) {
+        currentlyExpanded.classList.remove("expanded");
+      }
+
+      // Expand current card
+      card.classList.add("expanded");
+      currentlyExpanded = card;
+
+      // Stagger animation for feature items
+      featureItems.forEach((item, index) => {
+        item.style.transitionDelay = `${(index + 1) * 0.1}s`;
+      });
+    });
+
+    card.addEventListener("mouseleave", () => {
+      // Collapse current card
+      card.classList.remove("expanded");
+      if (currentlyExpanded === card) {
+        currentlyExpanded = null;
+      }
+
+      // Reset transition delays
+      featureItems.forEach((item) => {
+        item.style.transitionDelay = "0s";
+      });
+    });
+  });
 });
