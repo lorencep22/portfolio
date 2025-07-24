@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Monthly Website Maintenance & Optimization</title>
+    <title>WordPress Security Recovery Case Study</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
@@ -34,6 +34,14 @@
         margin-bottom: 40px;
       }
 
+      .highlight {
+        background: #f2f2f2;
+        padding: 10px 15px;
+        border-left: 4px solid #1dcd9f;
+        font-family: monospace;
+        white-space: pre-wrap;
+      }
+
       ul {
         padding-left: 20px;
       }
@@ -49,64 +57,90 @@
 
   <body>
     <div class="container">
-      <h1>Monthly Website Maintenance & Optimization</h1>
-      <h2>Ongoing Support for AyalaLand Logistics & Affiliates</h2>
+      <h1>WordPress Security Incident Recovery</h1>
+      <h2>Case Study: SEO Spam, User Injection & Malware Cleanup</h2>
 
       <div class="section">
-        <h3>Overview</h3>
+        <h3>Summary</h3>
         <p>
-          Responsible for continuous monthly website maintenance, performance
-          monitoring, and content updates for AyalaLand Logistics and affiliated
-          websites (Technopark, ALogis, and Artico).
+          After migrating a WordPress website (<strong
+            >Registered Training Organisation (RTO) in Australia, specializing
+            in vocational education and training</strong
+          >) to a shared hosting provider, the site was compromised with SEO
+          spam, user injection, and malicious files. I resolved the issue
+          through a combination of manual cleanup, plugin removal, and server
+          migration to AWS EC2.
         </p>
       </div>
 
       <div class="section">
-        <h3>Scope of Work</h3>
+        <h3>Issues Identified</h3>
         <ul>
+          <li>167,000+ fake users registered via unrestricted registration</li>
+          <li>SEO metadata hijacked to promote WENGTOTO gambling site</li>
+          <li>Meta images replaced with adult content</li>
           <li>
-            Monthly performance and speed audits using PageSpeed Insights and
-            GTmetrix
+            Suspicious files found: <code>.Admin.php</code>,
+            <code>wp_settings</code>, and altered <code>index.php</code>
           </li>
           <li>
-            WordPress core/plugin/theme updates and regular security scans
-          </li>
-          <li>Cache management and image optimization for performance</li>
-          <li>SEO and metadata updates for search visibility</li>
-          <li>Uptime monitoring and reporting</li>
-          <li>
-            Content updates across multiple websites for announcements,
-            services, and news
+            Compromised plugin injected spam and possibly enabled backdoor
+            access
           </li>
         </ul>
       </div>
 
       <div class="section">
-        <h3>Impact</h3>
-        <p>
-          Helped improve page load speed across all affiliated sites, ensured
-          up-to-date content, maintained search rankings, and reduced the risk
-          of downtime and security threats.
-        </p>
+        <h3>Actions Taken</h3>
+        <ul>
+          <li>Deleted all 167k+ fake users</li>
+          <li>Disabled "Anyone can register" option in WordPress</li>
+          <li>
+            Removed malicious files manually from the WordPress root and theme
+            directories
+          </li>
+          <li>
+            Reverted altered SEO metadata and cleaned up spam entries in the
+            database
+          </li>
+          <li>Removed compromised plugin</li>
+          <li>Migrated hosting to a secure AWS EC2 instance</li>
+          <li>
+            Installed Wordfence for malware scanning and firewall protection
+          </li>
+          <li>Enabled 2FA, login rate limiting, and regular backups</li>
+        </ul>
       </div>
 
       <div class="section">
-        <h3>Tools & Technologies Used</h3>
+        <h3>Results</h3>
         <ul>
-          <li>WordPress CMS</li>
-          <li>PageSpeed Insights, GTmetrix</li>
-          <li>Cloudflare CDN & Security</li>
-          <li>Yoast SEO plugin</li>
-          <li>UpdraftPlus for backups</li>
-          <li>WP-Optimize for caching and cleanup</li>
+          <li>All SEO spam and inappropriate content removed</li>
+          <li>Clean, secure WordPress installation restored</li>
+          <li>Google indexing restored through Search Console resubmission</li>
+          <li>
+            Hosting environment improved with better access control and
+            monitoring
+          </li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>Technical Stack</h3>
+        <ul>
+          <li><strong>Platform:</strong> WordPress 6.x</li>
+          <li><strong>Server:</strong> AWS EC2 (Ubuntu)</li>
+          <li>
+            <strong>Tools:</strong> Wordfence, phpMyAdmin, WP-CLI, CloudWatch
+          </li>
         </ul>
       </div>
 
       <div class="section">
         <h3>Handled By</h3>
         <p>
-          <strong>Lorence Palisan</strong><br />WordPress Developer &
-          Maintenance Specialist
+          <strong>Lorence Palisan</strong><br />WordPress Developer & Security
+          Analyst
         </p>
       </div>
     </div>
