@@ -600,3 +600,45 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+// Modal functionality for React Sample Sites
+function openSiteModal(event) {
+  event.preventDefault();
+  const modal = document.getElementById("siteModal");
+  modal.classList.add("show");
+
+  // Prevent body scroll when modal is open
+  document.body.style.overflow = "hidden";
+}
+
+function closeSiteModal() {
+  const modal = document.getElementById("siteModal");
+  modal.classList.remove("show");
+
+  // Restore body scroll
+  document.body.style.overflow = "auto";
+}
+
+// Close modal when clicking outside of it or pressing Escape
+document.addEventListener("DOMContentLoaded", function () {
+  const modal = document.getElementById("siteModal");
+
+  if (modal) {
+    // Close modal when clicking outside
+    modal.addEventListener("click", function (event) {
+      if (event.target === modal) {
+        closeSiteModal();
+      }
+    });
+  }
+
+  // Close modal with Escape key
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      const modal = document.getElementById("siteModal");
+      if (modal && modal.classList.contains("show")) {
+        closeSiteModal();
+      }
+    }
+  });
+});

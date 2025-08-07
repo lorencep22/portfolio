@@ -259,7 +259,7 @@
           <div class="portfolio-image">
             <div class="portfolio-overlay">
               <div class="portfolio-links">
-                <a href="https://lorencep22.github.io/sample_site1/" target="_blank" class="portfolio-link"><i
+                <a href="#" onclick="openSiteModal(event)" class="portfolio-link"><i
                     class="fas fa-external-link-alt"></i></a>
                 <a href="#" class="portfolio-link"><i class="fab fa-react"></i></a>
               </div>
@@ -605,6 +605,39 @@
       </div>
     </div>
   </footer>
+
+  <!-- Site Links Modal -->
+  <div id="siteModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>React Sample Sites</h3>
+        <span class="close" onclick="closeSiteModal()">&times;</span>
+      </div>
+      <div class="modal-body">
+        <p>Choose which version of the React sample site you'd like to visit:</p>
+        <div class="site-links">
+          <a href="https://lorencep22.github.io/sample_site1/" target="_blank" class="site-link">
+            <div class="site-link-content">
+              <i class="fab fa-react"></i>
+              <div class="site-info">
+                <h4>Sample Site 1</h4>
+                <p>Primary React website with modern design</p>
+              </div>
+            </div>
+          </a>
+          <a href="https://lorencep22.github.io/sample_site2/" target="_blank" class="site-link">
+            <div class="site-link-content">
+              <i class="fab fa-react"></i>
+              <div class="site-info">
+                <h4>Sample Site 2</h4>
+                <p>Alternative React website implementation</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
